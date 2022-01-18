@@ -33,7 +33,52 @@ void __interrupt() Interrupciones(void){
 }
 
 int main(int argc, char** argv) {
-
+    
+    // <editor-fold defaultstate="collapsed" desc="Configuracion hardware interno PIC">
+     //Configuracion inicial de los pines
+    ANSELA = 0x00;                                  //Configuracion de pines como digitales
+    ANSELB = 0x00;                                  //Configuracion de pines como digitales
+    ANSELC = 0x00;                                  //Configuracion de pines como digitales
+    
+    //Configuracion de entradas y salidas
+    TRISA = 0x00;                                   //Todos como salida
+    TRISB = 0x00;                                   //Todos como entrada
+    TRISC = 0x00;
+    //TRISC = 0b01000000;                              //C6 como entrada Todos como salida
+    
+    //Estado inicial del pin
+    PORTA= 0x00;                                    //Todos en cero
+    PORTB= 0x00;                                    //Todos en cero
+    PORTC= 0x00;                                    //Todos en cero
+    
+    //Configuracion del oscilador
+    
+    //Habilitar interrupciones globales
+    
+    //******Configuracion EUSART*****
+    //Configuracon de registros de envio
+    TX1STAbits.TX9 = 0;                             //Selecciona la transmición de 8 bits
+    TX1STAbits.TXEN = 1;                            //Activada la transmision
+    TX1STAbits.SYNC = 0;                            //Asincrono
+    TX1STAbits.BRGH = 1;                            //High Baudrate
+    
+    //Configuracion de registros de recepcion
+    RC1STAbits.SPEN = 1;                            //Habilita el puerto serial
+    RC1STAbits.RX9 = 0;                             //Recepcion de 8 bits, 1 PAra recepcion de 9 bits
+    RC1STAbits.SREN = 0;                            //No importa en asincrona
+    RC1STAbits.CREN = 1;                            //Habilita la recepcion
+    
+     //Configuracion de registros del baudrate
+    
+    // </editor-fold>
+    
+    while (1){
+        
+        EUSART_WriteByte(0x8F);
+        EUSART_WriteByte(0x81);
+        
+    }
+    
     return (EXIT_SUCCESS);
 }
 
