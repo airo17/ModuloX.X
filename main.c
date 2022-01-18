@@ -24,13 +24,13 @@ uint8_t mandar_mensaje = 0;
 uint8_t Output;
 uint8_t length;
 
-/*void __interrupt Interrupciones(){
-    if (PIR1bits.RC1IF == 1 && PIE1bits.RC1IE == 1){
+void __interrupt() Interrupciones(void){
+    /*if (PIR1bits.RC1IF == 1 && PIE1bits.RC1IE == 1){
         PORTAbits.RA0 ^= 1;
         PORTB = UART_Read();
         mandar_mensaje = 1;
-    }
-}*/
+    }*/
+}
 
 int main(int argc, char** argv) {
 

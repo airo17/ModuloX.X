@@ -16172,7 +16172,15 @@ char serial_cadena[] = {0x03,0x04,0x05};
 uint8_t mandar_mensaje = 0;
 uint8_t Output;
 uint8_t length;
-# 35 "main.c"
+
+void __attribute__((picinterrupt(("")))) Interrupciones(void){
+
+
+
+
+
+}
+
 int main(int argc, char** argv) {
 
     return (0);
